@@ -6,6 +6,8 @@ import 'package:zerozilla_test/src/config/bloc_config.dart';
 import 'route_manager/route_imports.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MyApp());

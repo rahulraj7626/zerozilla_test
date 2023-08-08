@@ -6,3 +6,9 @@ abstract class AuthEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class ValidationREvent extends AuthEvent {
+  final bool isValidated;
+
+  const ValidationREvent(this.isValidated);
+}

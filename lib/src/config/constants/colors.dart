@@ -10,4 +10,6 @@ class CColors {
   static Color blue = const Color(0xff2e90fb);
   static Color red = const Color(0xffd82e22);
   static Color grey = const Color(0xffa3aca8);
+  static Color darkGreen = const Color(0xff138c56);
+  static Color white = const Color(0xffbbdecf);
 }

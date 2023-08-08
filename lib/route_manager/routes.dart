@@ -9,5 +9,15 @@ class AppRouter extends $AppRouter {
         CupertinoRoute(
           page: LoginScreenRoute.page,
         ),
+        CupertinoRoute(page: HomeScreenRoute.page, initial: true),
+        CupertinoRoute(
+          page: DashBoardScreenRoute.page,
+        ),
+        CupertinoRoute(
+          page: DashBoardScreenRoute.page,
+        ),
+        CupertinoRoute(
+          page: NotificationRoute.page,
+        ),
       ];
 }
