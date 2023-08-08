@@ -18,9 +18,6 @@ class LocationWidget extends StatefulWidget {
 }
 
 class _LocationWidgetState extends State<LocationWidget> {
-  String drop1 = 'Kodaku';
-  String drop2 = "Bandipura";
-  String drop3 = "Somwarpet";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -188,4 +185,8 @@ class _LocationWidgetState extends State<LocationWidget> {
       ],
     );
   }
+
+  String drop1 = 'Kodaku';
+  String drop2 = "Bandipura";
+  String drop3 = "Somwarpet";
 }
