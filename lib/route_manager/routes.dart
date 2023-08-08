@@ -7,9 +7,9 @@ class AppRouter extends $AppRouter {
   @override
   List<CupertinoRoute> get routes => [
         CupertinoRoute(
-          page: LoginScreenRoute.page,
+          page: LoginScreenRoute.page,initial: true
         ),
-        CupertinoRoute(page: HomeScreenRoute.page, initial: true),
+        CupertinoRoute(page: HomeScreenRoute.page, ),
         CupertinoRoute(
           page: DashBoardScreenRoute.page,
         ),
