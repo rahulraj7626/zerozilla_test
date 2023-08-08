@@ -45,10 +45,21 @@ class HomeScreen extends StatelessWidget {
                         size: 35,
                         color: CColors.darkGreen,
                       ),
-                      subtitle: Text(
-                        "Madikeri",
-                        style: AppTextStyle.largeStyle(
-                            fontColor: CColors.black152e22),
+                      subtitle: Row(
+                        children: [
+                          Text(
+                            "Madikeri",
+                            style: AppTextStyle.largeStyle(
+                                fontColor: CColors.black152e22),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: Icon(
+                              Icons.arrow_drop_down_circle,
+                              color: CColors.darkGreen,
+                            ),
+                          )
+                        ],
                       ),
                       title: Text(
                         "Division office",

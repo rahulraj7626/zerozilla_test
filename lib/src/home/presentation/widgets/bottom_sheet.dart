@@ -15,8 +15,8 @@ locationBottomSheet(BuildContext context, final Function() onChanged) {
       builder: (builder) {
         return Container(
             height: MediaQuery.of(context).size.height < 700.0
-                ? MediaQuery.of(context).size.height * 0.85
-                : MediaQuery.of(context).size.height * 0.75,
+                ? MediaQuery.of(context).size.height * 0.75
+                : MediaQuery.of(context).size.height * 0.65,
             color: Colors.transparent,
             child: LocationWidget(
               onChanged: () => onChanged(),
