@@ -7,7 +7,8 @@ class StringConstants {
   static const String rememberMe = "Remember me";
   static const String forgotPassword = "Forgot password";
   static const String update28 = "Updated 28 min ago";
-
+  static const String confirm = "Confirm";
+  static const String cancel = "Cancel";
   static const String working = "Working";
   static const String faulty = "Faulty";
   static const String attention = "Attention";
@@ -24,6 +25,6 @@ class StringConstants {
   static const String networkStrength = "Network\nStrength";
   static const String batteryCharg = "Battery\nCharging";
   static const String fenceCurrent = "Fence\nCurrent";
-    static const String switchOff = "Switched\nOff";
+  static const String switchOff = "Switched\nOff";
   static const String valueProgress = "5.2 kw\n1.2 Amps";
 }

@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:zerozilla_test/route_manager/route_imports.gr.dart';
 import 'package:zerozilla_test/src/config/common_widgets.dart/app_styles.dart';
 import 'package:zerozilla_test/src/config/constants/colors.dart';
 import 'package:zerozilla_test/src/config/constants/string_constants.dart';
+import '../widgets/bottom_sheet.dart';
 import '../widgets/bottom_widget.dart';
 import '../widgets/home_item.dart';
 import '../widgets/top_item.dart';
@@ -36,6 +38,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ListTile(
+                      onTap: () => locationBottomSheet(context, () {}),
                       titleAlignment: ListTileTitleAlignment.center,
                       leading: Icon(
                         Icons.location_city,
@@ -51,16 +54,20 @@ class HomeScreen extends StatelessWidget {
                         "Division office",
                         style: AppTextStyle.normalDesc(fontColor: CColors.grey),
                       ),
-                      trailing: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: CColors.darkGreen,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const Icon(
-                            Icons.notifications_active,
-                            color: Colors.white,
-                          )),
+                      trailing: GestureDetector(
+                        onTap: () =>
+                            context.pushRoute(const NotificationRoute()),
+                        child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                color: CColors.darkGreen,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Icon(
+                              Icons.notifications_active,
+                              color: Colors.white,
+                            )),
+                      ),
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
@@ -92,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                controller:  ScrollController(keepScrollOffset: false),
+                controller: ScrollController(keepScrollOffset: false),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: gridList)
