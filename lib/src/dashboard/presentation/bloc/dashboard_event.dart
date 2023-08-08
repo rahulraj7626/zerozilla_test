@@ -6,3 +6,9 @@ abstract class DashboardEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class SwitchEvent extends DashboardEvent {
+  final bool isOn;
+
+  const SwitchEvent(this.isOn);
+}

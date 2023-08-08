@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../config/common_widgets.dart/app_styles.dart';
 import '../../../config/constants/colors.dart';
+import '../bloc/dashboard_bloc.dart';
+import 'custom_switch.dart';
 
-AppBar appbarWidget(BuildContext context) {
+AppBar appbarWidget(
+  BuildContext context,
+) {
   return AppBar(
     elevation: 0,
     backgroundColor: Colors.white,
@@ -19,12 +23,16 @@ AppBar appbarWidget(BuildContext context) {
       style: AppTextStyle.normalStyle(fontColor: CColors.black152e22),
     ),
     actions: [
-      IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.notification_add,
-            color: CColors.blue,
-          ))
+      BlocBuilder(
+        bloc: BlocProvider.of<DashboardBloc>(context),
+        builder: (BuildContext context, DashboardState state) {
+          if (state is SwitchOnState || state is DashboardInitial) {
+            return switchWidget(context, true);
+          } else {
+            return switchWidget(context, false);
+          }
+        },
+      ),
     ],
   );
 }

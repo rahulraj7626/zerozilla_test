@@ -8,6 +8,7 @@ class ButtonWidget extends StatelessWidget {
   final String buttonName;
   final double? fontSize;
   final double? height;
+  final bool isValidated;
 
   final void Function()? onpressed;
 
@@ -17,6 +18,7 @@ class ButtonWidget extends StatelessWidget {
     this.fontSize,
     this.height,
     this.onpressed,
+    required this.isValidated,
   }) : super(key: key);
   static const txtStyle =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white);
@@ -26,7 +28,7 @@ class ButtonWidget extends StatelessWidget {
     return Padding(
       padding: Ppadding.defualtPadding,
       child: ElevatedButton(
-        onPressed: onpressed,
+        onPressed: isValidated ? onpressed : null,
         style: ButtonStyle(
           overlayColor: MaterialStateProperty.all<Color>(
             CColors.greenMain118c55,
@@ -42,7 +44,7 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: Ink(
           decoration: BoxDecoration(
-            color: CColors.greenMain118c55,
+            color: isValidated ? CColors.greenMain118c55 : CColors.grey,
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
           ),
           child: Container(

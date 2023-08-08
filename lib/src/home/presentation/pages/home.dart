@@ -22,81 +22,84 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: Column(children: [
-            Container(
-              height: 230,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.1),
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(24),
-                    bottomRight: Radius.circular(24)),
-              ),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ListTile(
-                      titleAlignment: ListTileTitleAlignment.center,
-                      leading: Icon(
-                        Icons.location_city,
-                        size: 35,
-                        color: CColors.darkGreen,
-                      ),
-                      subtitle: Text(
-                        "Madikeri",
-                        style: AppTextStyle.largeStyle(
-                            fontColor: CColors.black152e22),
-                      ),
-                      title: Text(
-                        "Division office",
-                        style: AppTextStyle.normalDesc(fontColor: CColors.grey),
-                      ),
-                      trailing: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: CColors.darkGreen,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const Icon(
-                            Icons.notifications_active,
-                            color: Colors.white,
-                          )),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 24),
-                        child: Text(
-                          "Fence details",
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Container(
+                height: 230,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.1),
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(24),
+                      bottomRight: Radius.circular(24)),
+                ),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ListTile(
+                        titleAlignment: ListTileTitleAlignment.center,
+                        leading: Icon(
+                          Icons.location_city,
+                          size: 35,
+                          color: CColors.darkGreen,
+                        ),
+                        subtitle: Text(
+                          "Madikeri",
                           style: AppTextStyle.largeStyle(
                               fontColor: CColors.black152e22),
                         ),
+                        title: Text(
+                          "Division office",
+                          style:
+                              AppTextStyle.normalDesc(fontColor: CColors.grey),
+                        ),
+                        trailing: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                color: CColors.darkGreen,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Icon(
+                              Icons.notifications_active,
+                              color: Colors.white,
+                            )),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        topItem(Icons.shield_moon_outlined,
-                            StringConstants.working, "12", CColors.darkGreen),
-                        topItem(Icons.warning_rounded, StringConstants.working,
-                            "23", CColors.yellow),
-                        topItem(Icons.lightbulb_circle, StringConstants.working,
-                            "2", CColors.red)
-                      ],
-                    ),
-                    const SizedBox()
-                  ]),
-            ),
-            GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.all(10),
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                controller: new ScrollController(keepScrollOffset: false),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: gridList)
-          ]),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 24),
+                          child: Text(
+                            "Fence details",
+                            style: AppTextStyle.largeStyle(
+                                fontColor: CColors.black152e22),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          topItem(Icons.shield_moon_outlined,
+                              StringConstants.working, "12", CColors.darkGreen),
+                          topItem(Icons.warning_rounded,
+                              StringConstants.working, "23", CColors.yellow),
+                          topItem(Icons.lightbulb_circle,
+                              StringConstants.working, "2", CColors.red)
+                        ],
+                      ),
+                      const SizedBox()
+                    ]),
+              ),
+              GridView.count(
+                  crossAxisCount: 2,
+                  padding: EdgeInsets.all(10),
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  controller: new ScrollController(keepScrollOffset: false),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: gridList)
+            ]),
+          ),
         ),
       ),
       bottomSheet: bottomWidget(context),

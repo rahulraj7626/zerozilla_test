@@ -15,4 +15,15 @@ class StringConstants {
   static const String fence = "Fence";
   static const String solar = "Solar";
   static const String battery = "Battery";
+
+  static const String batteryVolt = "Battery\nVoltage";
+  static const String fenceVolt = "Fence\nVoltage";
+  static const String solarVolt = "Solar\nVoltage";
+  static const String solarCurrent = "Solar\nCurrent";
+
+  static const String networkStrength = "Network\nStrength";
+  static const String batteryCharg = "Battery\nCharging";
+  static const String fenceCurrent = "Fence\nCurrent";
+    static const String switchOff = "Switched\nOff";
+  static const String valueProgress = "5.2 kw\n1.2 Amps";
 }

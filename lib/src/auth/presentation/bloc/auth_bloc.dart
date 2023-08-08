@@ -6,6 +6,12 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
-    on<AuthEvent>((event, emit) {});
+    on<ValidationREvent>((event, emit) {
+      if (event.isValidated) {
+        emit(ValidatedState());
+      } else {
+        emit(NotValidatedState());
+      }
+    });
   }
 }

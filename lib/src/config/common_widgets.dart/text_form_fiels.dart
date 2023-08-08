@@ -15,6 +15,7 @@ class TextFieldWidget extends StatefulWidget {
   final bool? isCapitalize;
   final InputType type;
   final bool? readOnly;
+  final void Function(String)? onChangeFn;
 
   const TextFieldWidget({
     Key? key,
@@ -26,6 +27,7 @@ class TextFieldWidget extends StatefulWidget {
     required this.type,
     this.readOnly,
     this.isCapitalize,
+    this.onChangeFn,
   }) : super(key: key);
 
   @override
@@ -49,15 +51,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         // style: GoogleFonts.poppins(
         //   textStyle: TextFieldWidget.txtStyle,
         // ),
-
+        onChanged: widget.onChangeFn,
         cursorColor: CColors.black152e22,
-        onChanged: (value) {
-          if (widget.controller.text != value.toUpperCase() &&
-              widget.isCapitalize == true) {
-            widget.controller.value =
-                widget.controller.value.copyWith(text: value.toUpperCase());
-          }
-        },
+
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: widget.controller,
 
@@ -123,9 +119,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               widget.confirm == null &&
               AuthHelpers().isPasswordFn(value) == false) {
             return "Password should be a minimum of 5 characters ";
-          } else if (widget.type == InputType.email &&
-              AuthHelpers().isEmailFn(value) == false) {
-            return "Invalid Email";
           } else if (widget.confirm != null &&
               AuthHelpers().confirmPassword(value, widget.confirm!.text) ==
                   false) {
