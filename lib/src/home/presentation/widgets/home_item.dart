@@ -6,7 +6,7 @@ import '../../../config/constants/colors.dart';
 
 Container homeItem(bool isSelected, icon, title, count) {
   return Container(
-    padding: EdgeInsets.all(24),
+    padding: const EdgeInsets.all(24),
     decoration: BoxDecoration(
         color: isSelected ? CColors.greenMain118c55 : Colors.white,
         borderRadius: BorderRadius.circular(18),

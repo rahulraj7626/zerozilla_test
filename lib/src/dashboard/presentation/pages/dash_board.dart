@@ -18,44 +18,41 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbarWidget(context),
-      body: Container(
-        child: Column(children: [
-          SizedBox(
-            height: 180,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: topWidgetList.length,
-                itemBuilder: (context, index) => topWidgetList[index]),
-          ),
-          BlocBuilder(
-            bloc: BlocProvider.of<DashboardBloc>(context),
-            builder: (BuildContext context, DashboardState state) {
-              if (state is SwitchOnState || state is DashboardInitial) {
-                return progressWidget(
-                    context, true, StringConstants.valueProgress);
-              } else {
-                return progressWidget(
-                    context, false, StringConstants.switchOff);
-              }
-            },
-          ),
-          Text(
-            "Updated 28 min ago",
-            style: AppTextStyle.normalStyle(fontColor: CColors.grey),
-          ),
-          SizedBox(
-            height: 150,
-            child: ListView.builder(
+      body: Column(children: [
+        SizedBox(
+          height: 180,
+          child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: bottomWidgetList.length,
-              itemBuilder: (context, index) => bottomWidgetList[index],
-            ),
+              itemCount: topWidgetList.length,
+              itemBuilder: (context, index) => topWidgetList[index]),
+        ),
+        BlocBuilder(
+          bloc: BlocProvider.of<DashboardBloc>(context),
+          builder: (BuildContext context, DashboardState state) {
+            if (state is SwitchOnState || state is DashboardInitial) {
+              return progressWidget(
+                  context, true, StringConstants.valueProgress);
+            } else {
+              return progressWidget(context, false, StringConstants.switchOff);
+            }
+          },
+        ),
+        Text(
+          "Updated 28 min ago",
+          style: AppTextStyle.normalStyle(fontColor: CColors.grey),
+        ),
+        SizedBox(
+          height: 150,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: bottomWidgetList.length,
+            itemBuilder: (context, index) => bottomWidgetList[index],
           ),
-          const SizedBox(
-            height: 40,
-          )
-        ]),
-      ),
+        ),
+        const SizedBox(
+          height: 40,
+        )
+      ]),
     );
   }
 

@@ -20,92 +20,90 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Container(
-        child: Form(
-          key: formKeyLogin,
-          child: SingleChildScrollView(
-            child: Column(children: [
-              SizedBox(
-                height: 300,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(24),
-                      bottomRight: Radius.circular(24)),
-                  child: Image.asset(
-                    Iimages.loginImage,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              SizedBox(
-                height: 100,
+      body: Form(
+        key: formKeyLogin,
+        child: SingleChildScrollView(
+          child: Column(children: [
+            SizedBox(
+              height: 300,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24)),
                 child: Image.asset(
-                  Iimages.logoImage,
+                  Iimages.loginImage,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(
-                height: 30,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            SizedBox(
+              height: 100,
+              child: Image.asset(
+                Iimages.logoImage,
+                fit: BoxFit.cover,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  StringConstants.fenceMonitoring,
-                  style: AppTextStyle.largeStyle(),
-                ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                StringConstants.fenceMonitoring,
+                style: AppTextStyle.largeStyle(),
               ),
-              SizedBox(
-                height: 20,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextFieldWidget(
+              hint: StringConstants.userName,
+              controller: usernameController,
+              secure: false,
+              type: InputType.normal,
+              errMsg: "Username required *",
+              onChangeFn: (p0) {
+                validate(context);
+              },
+            ),
+            TextFieldWidget(
+              hint: StringConstants.password,
+              controller: passwordController,
+              secure: true,
+              type: InputType.password,
+              errMsg: "Password required *",
+              onChangeFn: (p0) {
+                validate(context);
+              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: Ppadding.defualtPadding,
+              child: Row(
+                children: [
+                  Checkbox(value: false, onChanged: (value) {}),
+                  const Text(StringConstants.rememberMe),
+                  const Spacer(),
+                  const Text(StringConstants.forgotPassword),
+                ],
               ),
-              TextFieldWidget(
-                hint: StringConstants.userName,
-                controller: usernameController,
-                secure: false,
-                type: InputType.normal,
-                errMsg: "Username required *",
-                onChangeFn: (p0) {
-                  validate(context);
-                },
-              ),
-              TextFieldWidget(
-                hint: StringConstants.password,
-                controller: passwordController,
-                secure: true,
-                type: InputType.password,
-                errMsg: "Password required *",
-                onChangeFn: (p0) {
-                  validate(context);
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: Ppadding.defualtPadding,
-                child: Row(
-                  children: [
-                    Checkbox(value: false, onChanged: (value) {}),
-                    Text(StringConstants.rememberMe),
-                    Spacer(),
-                    Text(StringConstants.forgotPassword),
-                  ],
-                ),
-              ),
-              BlocBuilder(
-                bloc: BlocProvider.of<AuthBloc>(context),
-                builder: (BuildContext context, AuthState state) {
-                  if (state is ValidatedState) {
-                    return buttonWidget(context, true);
-                  } else {
-                    return buttonWidget(context, false);
-                  }
-                },
-              ),
-            ]),
-          ),
+            ),
+            BlocBuilder(
+              bloc: BlocProvider.of<AuthBloc>(context),
+              builder: (BuildContext context, AuthState state) {
+                if (state is ValidatedState) {
+                  return buttonWidget(context, true);
+                } else {
+                  return buttonWidget(context, false);
+                }
+              },
+            ),
+          ]),
         ),
       ),
     );
